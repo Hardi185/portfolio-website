@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageCircle, ChevronDown, Coffee, Zap, Heart } from 'lucide-react';
 
+// To use your own image:
+// 1. Save your image as "profile.jpg" in src/assets/
+// 2. Uncomment the line below:
+import profilePic from '../assets/profile.jpeg';
+
 const Portfolio = () => {
     const [isVisible, setIsVisible] = useState({});
+    const [imageError, setImageError] = useState(false);
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -212,9 +219,18 @@ const Portfolio = () => {
 
                 <div className="max-w-4xl mx-auto px-6 text-center z-10 animate-fade-in">
                     <div className="mb-8 animate-bounce-slow">
-                        <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-green-500 p-1 animate-pulse-slow">
-                            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-6xl">
-                                👨‍💻
+                        <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-green-500 p-1 animate-pulse-slow overflow-hidden">
+                            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
+                                {!imageError && profilePic ? (
+                                    <img
+                                        src={profilePic}
+                                        alt="Hardi Jadvani"
+                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                        onError={() => setImageError(true)}
+                                    />
+                                ) : (
+                                    <span className="text-4xl text-gray-300">👨‍💻</span>
+                                )}
                             </div>
                         </div>
                     </div>
