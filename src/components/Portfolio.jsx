@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageCircle, ChevronDown, Coffee, Zap, Heart, TrendingUp, Globe, Headset, Handshake, Layout, Brain, Package, Users, GraduationCap } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageCircle, ChevronDown, Coffee, Zap, Heart, TrendingUp, Globe, Headset, Handshake, Layout, Brain, Package, Users, GraduationCap, Menu, X } from 'lucide-react';
 
 // To use your own image:
 // 1. Save your image as "profile.jpg" in src/assets/
@@ -9,6 +9,7 @@ import profilePic from '../assets/profile.jpeg';
 const Portfolio = () => {
     const [isVisible, setIsVisible] = useState({});
     const [imageError, setImageError] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
     useEffect(() => {
@@ -205,10 +206,12 @@ const Portfolio = () => {
             {/* Navigation */}
             <nav className="fixed top-0 w-full bg-gray-900/80 backdrop-blur-md z-50 border-b border-blue-500/20">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                    <button onClick={() => scrollToSection('home')} className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
                         HJ
-                    </h1>
-                    <div className="flex gap-6">
+                    </button>
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex gap-6">
                         {['Home', 'About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact'].map((item) => (
                             <button
                                 key={item}
@@ -219,7 +222,37 @@ const Portfolio = () => {
                             </button>
                         ))}
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="p-2 text-gray-400 hover:text-white transition-colors"
+                        >
+                            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                    </div>
                 </div>
+
+                {/* Mobile Navigation Dropdown */}
+                {isMenuOpen && (
+                    <div className="md:hidden bg-gray-900/95 border-b border-blue-500/20 animate-fade-in">
+                        <div className="flex flex-col p-4 gap-4">
+                            {['Home', 'About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact'].map((item) => (
+                                <button
+                                    key={item}
+                                    onClick={() => {
+                                        scrollToSection(item.toLowerCase());
+                                        setIsMenuOpen(false);
+                                    }}
+                                    className="text-left py-2 hover:text-blue-400 transition-colors border-b border-gray-800 last:border-0"
+                                >
+                                    {item}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </nav>
 
             {/* Hero Section */}
@@ -253,7 +286,7 @@ const Portfolio = () => {
 
                 <div className="max-w-4xl mx-auto px-6 text-center z-10 animate-fade-in">
                     <div className="mb-8 animate-bounce-slow">
-                        <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-green-500 p-1 animate-pulse-slow overflow-hidden">
+                        <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-green-500 p-1 animate-pulse-slow overflow-hidden">
                             <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
                                 {!imageError && profilePic ? (
                                     <img
@@ -269,13 +302,13 @@ const Portfolio = () => {
                         </div>
                     </div>
 
-                    <h1 className="text-6xl font-bold mb-4 animate-slide-up-1">
+                    <h1 className="text-4xl sm:text-6xl font-bold mb-4 animate-slide-up-1">
                         Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Hardi Jadvani</span>
                     </h1>
-                    <p className="text-2xl text-gray-300 mb-8 animate-slide-up-2">
+                    <p className="text-xl sm:text-2xl text-gray-300 mb-8 animate-slide-up-2">
                         Full Stack Developer | 3 Years of Experience | end-to-end solutions
                     </p>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12 animate-slide-up-3">
+                    <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mb-12 animate-slide-up-3">
                         Exploring diverse techs with a focus on algorithms and core concepts over syntax.
                         No language barriers, just a passion for learning and sharing.
                     </p>
@@ -322,7 +355,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6">
-                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         About <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Me</span>
                     </h2>
@@ -330,11 +363,11 @@ const Portfolio = () => {
                     <div className={`grid md:grid-cols-2 gap-12 transform transition-all duration-1000 delay-200 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         <div className="space-y-6">
-                            <p className="text-xl text-gray-300 leading-relaxed font-medium">
+                            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
                                 Technical expertise meets a mindset of continuous growth.
                                 I don't just write code; I own products and solve real-world problems.
                             </p>
-                            <p className="text-lg text-gray-400 leading-relaxed">
+                            <p className="text-base sm:text-lg text-gray-400 leading-relaxed">
                                 With a solid foundation in algorithms, I navigate through different
                                 technologies without barriers. My approach is centered on understanding core concepts,
                                 enabling me to switch between stacks as needed to deliver the best possible results.
@@ -356,10 +389,10 @@ const Portfolio = () => {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {[
                                 { icon: Code, title: 'Algorithm Focused', desc: 'Prioritizing concepts and logic over mere syntax', emoji: '🧠' },
-                                { icon: Users, title: 'Client Facing', desc: 'Client communication, support and requirement gathering', emoji: '�' },
+                                { icon: Users, title: 'Client Facing', desc: 'Client communication, support and requirement gathering', emoji: '👥' },
                                 { icon: Headset, title: 'Customer Support', desc: 'Fixing live customer issues in real-time', emoji: '🎯' },
                                 { icon: Globe, title: 'Tech Explorer', desc: 'Known and exploring diverse technologies', emoji: '🌐' },
                                 { icon: Handshake, title: 'Collaborative Gear', desc: 'Open for freelance, to share ideas and to learn from people', emoji: '🤝' },
@@ -396,7 +429,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6 w-full">
-                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.skills ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.skills ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         Technical <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Skills</span>
                     </h2>
@@ -452,7 +485,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6 w-full">
-                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.experience ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.experience ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         Work <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Experience</span>
                     </h2>
@@ -507,7 +540,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6 w-full">
-                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.education ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.education ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         My <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Education</span>
                     </h2>
@@ -553,7 +586,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6 w-full">
-                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.projects ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.projects ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         Featured <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Projects</span>
                     </h2>
@@ -611,7 +644,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="max-w-4xl mx-auto px-6 text-center w-full">
-                    <h2 className={`text-5xl font-bold mb-12 transform transition-all duration-1000 ${isVisible.contact ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-12 transform transition-all duration-1000 ${isVisible.contact ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         Get In <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Touch</span>
                     </h2>
