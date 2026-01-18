@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageCircle, ChevronDown, Coffee, Zap, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageCircle, ChevronDown, Coffee, Zap, Heart, TrendingUp, Globe, Headset, Handshake, Layout, Brain, Package, Users, GraduationCap } from 'lucide-react';
 
 // To use your own image:
 // 1. Save your image as "profile.jpg" in src/assets/
@@ -63,44 +63,78 @@ const Portfolio = () => {
                 'Designed document conversion tool supporting multiple languages (English, Arabic, Chinese, French)',
                 'Implemented unit and regression testing to increase code reliability'
             ]
+        },
+        {
+            company: 'Oasis Infobyte',
+            role: 'Java Developer Intern',
+            period: 'June 2022 - June 2022',
+            location: 'Remote',
+            highlights: [
+                'Completed 1 month of internship to gear up skills used in industries',
+                'Learned how things actually work in professional software development environments',
+                'Gained hands-on experience with Java development and industry best practices'
+            ]
+        }
+    ];
+
+    const education = [
+        {
+            school: 'Government Engineering College, Gandhinagar',
+            degree: 'Bachelor of Engineering in Information Technology',
+            period: 'July 2019 – May 2023',
+            grades: 'CGPA: 8.61 — CPI: 8.30'
         }
     ];
 
     const projects = [
         {
-            name: 'DSA By Strivers',
-            description: 'Complete A to Z DSA practice sheet implementation with solutions to algorithmic problems',
-            tech: ['Java', 'Data Structures', 'Algorithms'],
-            stars: 3,
-            link: 'https://github.com/Hardi185/DSAByStrivers'
-        },
-        {
-            name: 'SQL Practice Repository',
-            description: 'Comprehensive SQL practice problems covering various database concepts and query optimization',
-            tech: ['SQL', 'PostgreSQL', 'MSSQL'],
-            stars: 3,
-            link: 'https://github.com/Hardi185/SQL'
-        },
-        {
             name: 'City Savvy Guide',
             description: 'Web application providing travelers with unique local insights, curated content on city food, shopping hotspots, and hidden gems with Google Maps integration',
             tech: ['JavaScript', 'Google Maps API', 'HTML', 'CSS'],
-            stars: 3,
+            // stars: 3,
             link: '#'
         },
         {
-            name: 'ATM Interface',
-            description: 'Console-based Java application simulating ATM operations including login, profile updates, and transactions',
-            tech: ['Java', 'OOP'],
-            stars: 2,
-            link: 'https://github.com/Hardi185/Atm-interface'
+            name: 'Trilingo',
+            description: 'AI-powered language learning application for mastering English, German, and Hindi with interactive pronunciation guides, sentence structure comparison, and text-to-speech support',
+            tech: ['TypeScript', 'Next.js', 'JavaScript', 'CSS'],
+            // stars: 5,
+            link: 'https://trilingolearning.vercel.app/'
         },
         {
-            name: 'Online Examination System',
-            description: 'MCQ-based examination system with timer, profile management, and automatic result generation',
-            tech: ['Java', 'Swing'],
-            stars: 2,
-            link: 'https://github.com/Hardi185/Online-examination'
+            name: 'MyEPOSRX Support',
+            description: 'Customer support website for EPOS solutions where customers can request demos, schedule installations, and arrange training sessions',
+            tech: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
+            // stars: 4,
+            link: 'https://myepos.support/'
+        },
+        {
+            name: 'EPOSRX Mobile App',
+            description: 'Mobile scanner app for barcode operations including stock check, stock management, safe management, expense tracking, shrinkage management, and petty cash receipts',
+            tech: ['React', 'Node.js', 'Express.js'],
+            // stars: 5,
+            link: 'http://mobile.eposrx.com/'
+        },
+        {
+            name: 'BarShop Website',
+            description: 'E-commerce website created for a USA-based liquor and wine retail customer with modern design and user-friendly interface',
+            tech: ['HTML', 'CSS', 'JavaScript'],
+            // stars: 4,
+            link: 'https://mitchellliquorwine.com/'
+        },
+        {
+            name: 'Hotel Ease',
+            description: 'Cloud-based hotel management software for streamlining reservations, front desk operations, billing, housekeeping, and reporting with real-time updates and channel management',
+            tech: ['Angular', 'Node.js', 'SQL', 'Azure'],
+            // stars: 5,
+            link: '#'
+        },
+        {
+            name: 'Number Guessing Game',
+            description: 'Interactive game where players guess numbers within limited trials, receiving hints with each attempt to win higher points with minimum trials',
+            tech: ['React', 'Spring Boot'],
+            // stars: 3,
+            link: '#'
         }
     ];
 
@@ -175,7 +209,7 @@ const Portfolio = () => {
                         HJ
                     </h1>
                     <div className="flex gap-6">
-                        {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+                        {['Home', 'About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact'].map((item) => (
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -239,11 +273,11 @@ const Portfolio = () => {
                         Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Hardi Jadvani</span>
                     </h1>
                     <p className="text-2xl text-gray-300 mb-8 animate-slide-up-2">
-                        Versatile Software Engineer | Full Stack Developer
+                        Full Stack Developer | 3 Years of Experience | end-to-end solutions
                     </p>
                     <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12 animate-slide-up-3">
-                        Passionate about turning complex challenges into efficient, user-friendly solutions.
-                        Specializing in Java, Spring Boot, Angular, React, .NET, and Node.js.
+                        Exploring diverse techs with a focus on algorithms and core concepts over syntax.
+                        No language barriers, just a passion for learning and sharing.
                     </p>
 
                     <div className="flex gap-6 justify-center mb-12 animate-slide-up-4">
@@ -296,41 +330,53 @@ const Portfolio = () => {
                     <div className={`grid md:grid-cols-2 gap-12 transform transition-all duration-1000 delay-200 ${isVisible.about ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                         }`}>
                         <div className="space-y-6">
-                            <p className="text-lg text-gray-300 leading-relaxed">
-                                I'm a passionate Software Engineer dedicated to transforming complex challenges into efficient,
-                                user-friendly solutions. With expertise spanning both frontend and backend development, I build
-                                robust applications that deliver real value.
+                            <p className="text-xl text-gray-300 leading-relaxed font-medium">
+                                Technical expertise meets a mindset of continuous growth.
+                                I don't just write code; I own products and solve real-world problems.
                             </p>
-                            <p className="text-lg text-gray-300 leading-relaxed">
-                                Currently working at EPOSRX.com, I handle end-to-end product ownership for Electronic Point of
-                                Sale solutions across desktop, web, and mobile platforms, managing everything from requirements
-                                to production deployment.
+                            <p className="text-lg text-gray-400 leading-relaxed">
+                                With a solid foundation in algorithms, I navigate through different
+                                technologies without barriers. My approach is centered on understanding core concepts,
+                                enabling me to switch between stacks as needed to deliver the best possible results.
                             </p>
-                            <p className="text-lg text-gray-300 leading-relaxed">
-                                I believe in writing clean, scalable code and continuously learning new technologies to stay at
-                                the cutting edge of software development.
-                            </p>
+                            <div className="flex flex-wrap gap-4 mt-8">
+                                <div className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-lg text-blue-400 text-sm">
+                                    🚀 Always Learning
+                                </div>
+                                <div className="px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-yellow-400 text-sm">
+                                    📈 Always Ready For Changes And Chances To Grow
+
+                                </div>
+                                <div className="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-400 text-sm">
+                                    🤝 Always Welcoming Towards New Opportunity
+                                </div>
+                                <div className="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-400 text-sm">
+                                    📦 Product Ownership and Deployments
+                                </div>
+                            </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             {[
-                                { icon: Code, title: 'Full-Stack Development', desc: 'End-to-end solutions from UI to backend', emoji: '💻' },
-                                { icon: Briefcase, title: 'Product Ownership', desc: 'Requirements to deployment', emoji: '📦' },
-                                { icon: User, title: 'Customer Support', desc: 'Real-time issue resolution', emoji: '🎯' },
-                                { icon: MessageCircle, title: 'Collaboration', desc: 'Cross-functional teamwork', emoji: '🤝' }
+                                { icon: Code, title: 'Algorithm Focused', desc: 'Prioritizing concepts and logic over mere syntax', emoji: '🧠' },
+                                { icon: Users, title: 'Client Facing', desc: 'Client communication, support and requirement gathering', emoji: '�' },
+                                { icon: Headset, title: 'Customer Support', desc: 'Fixing live customer issues in real-time', emoji: '🎯' },
+                                { icon: Globe, title: 'Tech Explorer', desc: 'Known and exploring diverse technologies', emoji: '🌐' },
+                                { icon: Handshake, title: 'Collaborative Gear', desc: 'Open for freelance, to share ideas and to learn from people', emoji: '🤝' },
+                                { icon: Layout, title: 'Visual Thinker', desc: 'Love to visualize via DFDs and diagrams', emoji: '📊' }
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
                                     className="bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 p-6 rounded-lg 
-                           transform hover:scale-105 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer
-                           hover:rotate-2 relative group"
+                                   transform hover:scale-105 hover:bg-blue-500/20 transition-all duration-300 cursor-pointer
+                                   hover:rotate-2 relative group"
                                 >
                                     <div className="absolute -top-4 -right-4 text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-bounce-slow">
                                         {item.emoji}
                                     </div>
                                     <item.icon className="w-10 h-10 mb-4 text-blue-400" />
                                     <h3 className="font-semibold mb-2">{item.title}</h3>
-                                    <p className="text-sm text-gray-400">{item.desc}</p>
+                                    <p className="text-xs text-gray-400">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -449,6 +495,52 @@ const Portfolio = () => {
                 </div>
             </section>
 
+            {/* Education Section */}
+            <section id="education" className="min-h-screen flex items-center py-20 bg-black/20 relative">
+                {/* Floating Graduation Cap */}
+                <div className="absolute right-10 bottom-1/4 hidden lg:block">
+                    <div className="relative animate-float-up-down">
+                        <GraduationCap className="w-32 h-32 text-blue-400/30" />
+                        <div className="absolute top-0 right-0 text-6xl animate-pulse">🎓</div>
+                        <div className="absolute -bottom-4 left-0 text-3xl animate-bounce">📚</div>
+                    </div>
+                </div>
+
+                <div className="max-w-6xl mx-auto px-6 w-full">
+                    <h2 className={`text-5xl font-bold mb-12 text-center transform transition-all duration-1000 ${isVisible.education ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                        }`}>
+                        My <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Education</span>
+                    </h2>
+
+                    <div className="space-y-8">
+                        {education.map((edu, idx) => (
+                            <div
+                                key={idx}
+                                className={`bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-lg p-8
+                          transform transition-all duration-1000 hover:scale-105 hover:bg-blue-500/20
+                          hover:shadow-2xl hover:shadow-blue-500/50 relative group ${isVisible.education ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: `${idx * 200}ms` }}
+                            >
+                                <div className="absolute -top-6 -right-6 text-5xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-bounce-slow">
+                                    🎓
+                                </div>
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-blue-400">{edu.degree}</h3>
+                                        <p className="text-xl text-gray-300">{edu.school}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-gray-400">{edu.period}</p>
+                                        <p className="text-blue-500 font-medium">{edu.grades}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Projects Section */}
             <section id="projects" className="min-h-screen flex items-center py-20 bg-black/20 relative">
                 {/* Floating Stars */}
@@ -477,7 +569,7 @@ const Portfolio = () => {
                                 style={{ transitionDelay: `${idx * 100}ms` }}
                             >
                                 <div className="absolute -top-3 -right-3 text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-bounce">
-                                    🔥
+                                    ⭐
                                 </div>
                                 <div className="flex justify-between items-start mb-4">
                                     <h3 className="text-xl font-bold text-blue-400">{project.name}</h3>
@@ -497,10 +589,10 @@ const Portfolio = () => {
                                     ))}
                                 </div>
 
-                                <div className="flex items-center text-gray-400 text-sm">
+                                {/* <div className="flex items-center text-gray-400 text-sm">
                                     <span className="mr-1">⭐</span>
                                     <span>{project.stars}</span>
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                     </div>
